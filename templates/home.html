@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Marché</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.0.1"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container py-4">
+  <h1 class="text-center mb-4">Évolution des performances</h1>
+
+  <!-- Sélecteurs de date -->
+  <div class="text-center mb-4">
+    <label class="me-2">Début : <input type="date" id="startDate" class="form-control d-inline w-auto" /></label>
+    <label class="me-2">Fin : <input type="date" id="endDate" class="form-control d-inline w-auto" /></label>
+    <button class="btn btn-dark ms-2" onclick="applyDates()">Appliquer les dates</button>
+  </div>
+
+  <!-- Boutons d'interaction -->
+  <div class="text-center mb-3">
+    <button class="btn btn-info me-2" onclick="switchChart()">Changer Type (Line/Bar)</button>
+    <button class="btn btn-success me-2" onclick="switchPieChart()">Changer Pie Chart (Perf/Valeur)</button>
+    <button class="btn btn-secondary" onclick="resetZoom()">Réinitialiser le zoom</button>
+  </div>
+
+  <!-- Ajout de ticker -->
+  <div class="text-center mb-4">
+    <input type="text" id="newTicker" placeholder="Ajouter un ticker (ex: AMD)" class="form-control d-inline w-auto" />
+    <button class="btn btn-primary ms-2" onclick="addNewTicker()">Ajouter</button>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h5>Graphique des performances : <span id="chartTypeLabel">Courbe</span></h5>
+      <canvas id="mainChart"></canvas>
+    </div>
+    <div class="col-md-4">
+      <h5>Graphique de répartition : <span id="pieLabel">Variation (%)</span></h5>
+      <canvas id="pieChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<script>
+const performances = {{ performances | tojson }};
+const dates = {{ dates | tojson }};
+
+let chartType = 'line';
+let pieMode = 'variation';
+
+const ctx = document.getElementById('mainChart').getContext('2d');
+const pieCtx = document.getElementById('pieChart').getContext('2d');
+
+function buildDatasets() {
+  const colors = ['#e6194b', '#ffe119', '#3cb44b', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6'];
+  const keys = Object.keys(performances);
+  return keys.map((key, i) => ({
+    label: key,
+    data: performances[key],
+    borderColor: colors[i % colors.length],
+    backgroundColor: colors[i % colors.length],
+    fill: false,
+    tension: 0.3
+  }));
+}
+
+function createChart() {
+  return new Chart(ctx, {
+    type: chartType,
+    data: {
+      labels: dates,
+      datasets: buildDatasets()
+    },
+    options: {
+      responsive: true,
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
+      plugins: {
+        zoom: {
+          zoom: {
+            wheel: { enabled: true },
+            pinch: { enabled: true },
+            mode: 'x'
+          },
+          pan: {
+            enabled: true,
+            mode: 'x'
+          }
+        }
+      }
+    }
+  });
+}
+
+let chart = createChart();
+let pieChart;
+
+function updatePieChart() {
+  if (pieChart) pieChart.destroy();
+
+  const labels = Object.keys(performances);
+  const values = labels.map(ticker => {
+    const data = performances[ticker];
+    if (!data || data.length < 2) return 0;
+    if (pieMode === 'variation') {
+      return ((data[data.length - 1] - data[0]) / data[0]) * 100;
+    } else {
+      return data[data.length - 1];
+    }
+  });
+
+  const bgColors = ['#e6194b', '#ffe119', '#3cb44b', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6'];
+
+  pieChart = new Chart(pieCtx, {
+    type: 'pie',
+    data: {
+      labels: labels,
+      datasets: [{
+        data: values,
+        backgroundColor: bgColors
+      }]
+    }
+  });
+
+  document.getElementById("pieLabel").innerText = pieMode === "variation" ? "Variation (%)" : "Valeur finale";
+}
+
+function switchChart() {
+  chartType = chartType === 'line' ? 'bar' : 'line';
+  chart.destroy();
+  chart = createChart();
+  document.getElementById("chartTypeLabel").innerText = chartType === 'line' ? 'Courbe' : 'Barres';
+}
+
+function switchPieChart() {
+  pieMode = pieMode === 'variation' ? 'value' : 'variation';
+  updatePieChart();
+}
+
+function resetZoom() {
+  chart.resetZoom();
+}
+
+function addNewTicker() {
+  const input = document.getElementById("newTicker");
+  const ticker = input.value.toUpperCase().trim();
+  if (!ticker || performances[ticker]) {
+    alert("Ticker invalide ou déjà affiché");
+    return;
+  }
+
+  fetch(`/add_ticker?ticker=${ticker}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.error) {
+        alert("Erreur : " + data.error);
+      } else {
+        performances[data.ticker] = data.closes;
+        chart.data.datasets = buildDatasets();
+        chart.update();
+        updatePieChart();
+      }
+    });
+}
+
+function applyDates() {
+  const start = document.getElementById("startDate").value;
+  const end = document.getElementById("endDate").value;
+  if (!start || !end) {
+    alert("Veuillez choisir une date de début et de fin");
+    return;
+  }
+  window.location.href = `/?start=${start}&end=${end}`;
+}
+
+function setDefaultDates() {
+  const end = new Date();
+  end.setDate(end.getDate() - 1); // Hier
+  const start = new Date(end);
+  start.setMonth(end.getMonth() - 1); // 1 mois avant
+
+  const format = d => d.toISOString().split("T")[0];
+
+  document.getElementById("startDate").value = format(start);
+  document.getElementById("endDate").value = format(end);
+}
+
+setDefaultDates();
+updatePieChart();
+</script>
+</body>
+</html>

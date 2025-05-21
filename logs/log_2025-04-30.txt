@@ -1,0 +1,90 @@
+[11:16:01] >> Chargement page d'accueil
+[11:16:01] Chargement des données pour AAPL
+[11:16:01] AAPL : données OK (20 lignes)
+[11:16:01] Chargement des données pour MSFT
+[11:16:01] MSFT : données OK (20 lignes)
+[11:16:01] Chargement des données pour SPY
+[11:16:02] SPY : données OK (20 lignes)
+[11:16:02] Chargement des données pour QQQ
+[11:16:02] QQQ : données OK (20 lignes)
+[11:16:02] Tickers chargés : ['AAPL', 'MSFT', 'SPY', 'QQQ']
+[11:16:02] Dates récupérées : ['2025-03-31', '2025-04-01', '2025-04-02'] ... ['2025-04-24', '2025-04-25', '2025-04-28']
+[11:20:12] >> Accès à /
+[11:20:12] Chargement AAPL
+[11:20:12] AAPL : OK (20 valeurs)
+[11:20:12] Chargement MSFT
+[11:20:12] MSFT : OK (20 valeurs)
+[11:20:12] Chargement SPY
+[11:20:13] SPY : OK (20 valeurs)
+[11:20:13] Chargement QQQ
+[11:20:13] QQQ : OK (20 valeurs)
+[11:20:18] >> Tentative ajout AMD
+[11:20:18] AMD ajouté avec 20 valeurs
+[11:20:55] >> Accès à /
+[11:20:55] Chargement AAPL
+[11:20:55] AAPL : OK (20 valeurs)
+[11:20:55] Chargement MSFT
+[11:20:55] MSFT : OK (20 valeurs)
+[11:20:55] Chargement SPY
+[11:20:55] SPY : OK (20 valeurs)
+[11:20:55] Chargement QQQ
+[11:20:55] QQQ : OK (20 valeurs)
+[11:20:55] Chargement AMD
+[11:20:55] AMD : OK (20 valeurs)
+[11:23:27] >> Accès à /
+[11:23:27] Chargement AAPL
+[11:23:27] AAPL : OK (20 valeurs)
+[11:23:27] Chargement MSFT
+[11:23:27] MSFT : OK (20 valeurs)
+[11:23:27] Chargement SPY
+[11:23:27] SPY : OK (20 valeurs)
+[11:23:27] Chargement QQQ
+[11:23:27] QQQ : OK (20 valeurs)
+[11:23:27] Chargement AMD
+[11:23:27] AMD : OK (20 valeurs)
+[11:23:37] >> Accès à /
+[11:23:37] Chargement AAPL
+[11:23:37] AAPL : OK (20 valeurs)
+[11:23:37] Chargement MSFT
+[11:23:37] MSFT : OK (20 valeurs)
+[11:23:37] Chargement SPY
+[11:23:37] SPY : OK (20 valeurs)
+[11:23:37] Chargement QQQ
+[11:23:37] QQQ : OK (20 valeurs)
+[11:23:37] Chargement AMD
+[11:23:37] AMD : OK (20 valeurs)
+[11:26:00] >> Accès à /
+[11:26:00] Chargement AAPL
+[11:26:00] AAPL : OK (20 valeurs)
+[11:26:00] Chargement MSFT
+[11:26:00] MSFT : OK (20 valeurs)
+[11:26:00] Chargement SPY
+[11:26:00] SPY : OK (20 valeurs)
+[11:26:00] Chargement QQQ
+[11:26:00] QQQ : OK (20 valeurs)
+[11:26:00] Chargement AMD
+[11:26:00] AMD : OK (20 valeurs)
+[11:26:36] >> Tentative ajout NVDA
+[11:26:36] NVDA ajouté avec 20 valeurs
+[11:30:09] >> Accès à /
+[11:30:09] Chargement AAPL
+[11:30:09] AAPL : OK (20 valeurs)
+[11:30:09] Chargement MSFT
+[11:30:09] MSFT : OK (20 valeurs)
+[11:30:09] Chargement SPY
+[11:30:09] SPY : OK (20 valeurs)
+[11:30:09] Chargement QQQ
+[11:30:09] QQQ : OK (20 valeurs)
+[11:30:15] >> Tentative ajout AMD
+[11:30:15] AMD ajouté avec 20 valeurs
+[11:30:35] >> Accès à /
+[11:30:35] Chargement AAPL
+[11:30:35] AAPL : OK (270 valeurs)
+[11:30:35] Chargement MSFT
+[11:30:35] MSFT : OK (270 valeurs)
+[11:30:35] Chargement SPY
+[11:30:35] SPY : OK (270 valeurs)
+[11:30:35] Chargement QQQ
+[11:30:35] QQQ : OK (270 valeurs)
+[11:30:35] Chargement AMD
+[11:30:35] AMD : OK (270 valeurs)

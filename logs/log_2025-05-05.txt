@@ -1,0 +1,37 @@
+[14:56:15] >> Accès à /
+[14:56:15] Chargement AAPL
+[14:56:18] AAPL : OK (270 valeurs)
+[14:56:18] Chargement MSFT
+[14:56:18] MSFT : OK (270 valeurs)
+[14:56:18] Chargement SPY
+[14:56:18] SPY : OK (270 valeurs)
+[14:56:18] Chargement QQQ
+[14:56:19] QQQ : OK (270 valeurs)
+[14:56:19] Chargement AMD
+[14:56:19] AMD : OK (270 valeurs)
+[14:56:41] >> Accès à /
+[14:56:41] Chargement AAPL
+[14:56:41] AAPL : OK (23 valeurs)
+[14:56:41] Chargement MSFT
+[14:56:41] MSFT : OK (23 valeurs)
+[14:56:41] Chargement SPY
+[14:56:41] SPY : OK (23 valeurs)
+[14:56:41] Chargement QQQ
+[14:56:41] QQQ : OK (23 valeurs)
+[14:56:41] Chargement AMD
+[14:56:41] AMD : OK (23 valeurs)
+[14:56:49] >> Tentative ajout NVDA
+[14:56:49] NVDA ajouté avec 20 valeurs
+[14:57:02] >> Accès à /
+[14:57:02] Chargement AAPL
+[14:57:02] AAPL : OK (62 valeurs)
+[14:57:02] Chargement MSFT
+[14:57:02] MSFT : OK (62 valeurs)
+[14:57:02] Chargement SPY
+[14:57:02] SPY : OK (62 valeurs)
+[14:57:02] Chargement QQQ
+[14:57:02] QQQ : OK (62 valeurs)
+[14:57:02] Chargement AMD
+[14:57:03] AMD : OK (62 valeurs)
+[14:57:03] Chargement NVDA
+[14:57:03] NVDA : OK (62 valeurs)

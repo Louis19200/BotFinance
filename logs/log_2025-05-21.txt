@@ -1,0 +1,13 @@
+[12:37:49] >> Accès à /
+[12:37:49] Chargement AAPL
+[12:37:51] AAPL : OK (21 valeurs)
+[12:37:51] Chargement MSFT
+[12:37:51] MSFT : OK (21 valeurs)
+[12:37:51] Chargement SPY
+[12:37:52] SPY : OK (21 valeurs)
+[12:37:52] Chargement QQQ
+[12:37:52] QQQ : OK (21 valeurs)
+[12:37:52] Chargement AMD
+[12:37:52] AMD : OK (21 valeurs)
+[12:37:52] Chargement NVDA
+[12:37:52] NVDA : OK (21 valeurs)

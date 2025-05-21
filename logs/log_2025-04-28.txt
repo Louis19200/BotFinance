@@ -1,0 +1,8 @@
+[16:59:21] --- Performances du 28/04/2025 ---
+[16:59:21] SPY: -0.01% (Clôture hier: 550.64 -> aujourd'hui: 550.58)
+[16:59:21] AAPL: -0.1% (Clôture hier: 209.28 -> aujourd'hui: 209.07)
+[16:59:21] QQQ: -0.3% (Clôture hier: 472.56 -> aujourd'hui: 471.14)
+[16:59:21] MSFT: -0.34% (Clôture hier: 391.85 -> aujourd'hui: 390.52)
+[16:59:21] AMZN: -0.48% (Clôture hier: 188.99 -> aujourd'hui: 188.08)
+[16:59:21] TSLA: -1.06% (Clôture hier: 284.95 -> aujourd'hui: 281.92)
+[16:59:21] Résultats sauvegardés dans exports/performances_2025-04-28.csv
